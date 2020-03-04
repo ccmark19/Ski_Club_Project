@@ -1,0 +1,74 @@
+﻿@model Xianer_SkiClub.Models.Schedule
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Schedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="scheduleId" />
+            <div class="form-group">
+                <label asp-for="scheduleId" class="control-label">Schedule ID</label>
+                <input readonly asp-for="scheduleId" class="form-control" />
+            <span asp-validation-for="scheduleId" class="text-danger"></span>
+            </div>
+                <div class="form-group">
+                <label asp-for="schedule_CoachId" class="control-label"></label>
+                <input asp-for="schedule_CoachId" class="form-control" />
+                <span asp-validation-for="schedule_CoachId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="startDate" class="control-label">Start Date</label>
+                <input asp-for="startDate" class="form-control" />
+                <span asp-validation-for="startDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="endDate" class="control-label">End Date</label>
+                <input asp-for="endDate" class="form-control" />
+                <span asp-validation-for="endDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="createDate" class="control-label"></label>
+                <input readonly asp-for="createDate" class="form-control" />
+                <span asp-validation-for="createDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="createByEmployeeId" class="control-label"></label>
+                <input readonly asp-for="createByEmployeeId" class="form-control" />
+                <span asp-validation-for="createByEmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lastModifiedDate" class="control-label"></label>
+                <input readonly asp-for="lastModifiedDate" class="form-control" />
+                <span asp-validation-for="lastModifiedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="lastModifiedByEmployeeId" class="control-label"></label>
+                <input readonly asp-for="lastModifiedByEmployeeId" class="form-control" />
+                <span asp-validation-for="lastModifiedByEmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="locationId" class="control-label">Location Name</label>
+                <select asp-for="locationId" class="form-control" asp-items="ViewBag.locationList"></select>
+                <span asp-validation-for="locationId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

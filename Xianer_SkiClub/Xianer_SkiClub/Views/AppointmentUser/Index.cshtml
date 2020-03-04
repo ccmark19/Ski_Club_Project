@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Xianer_SkiClub.Models.AppointmentUser>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.applicationUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.appointmentId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.applicationUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appointmentId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.appointmentUserId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.appointmentUserId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.appointmentUserId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Xianer_SkiClub.Models.Schedule>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if(User.Identity.IsAuthenticated)
+{
+    @if(User.IsInRole("Coach"))
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    }
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Schedule ID
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                Location
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+            @Html.DisplayFor(modelItem => item.scheduleId)
+            </td>           
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>            
+            <td>
+                @Html.DisplayFor(modelItem => item.location.locationDesc)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    if (User.IsInRole("Coach"))
+                    {
+                        <a asp-action="Edit" asp-route-CurrentUserId="@ViewBag.CurrentUserId" asp-route-id="@item.scheduleId">Edit |</a>
+                        <a asp-action="Details" asp-route-id="@item.scheduleId">Details |</a>
+                        <a asp-action="Delete" asp-route-id="@item.scheduleId">Delete |</a>
+                        <a asp-action="Create" asp-controller="Appointment" asp-route-selectedScheduleID="@item.scheduleId">Add Appointment</a>
+
+                    }
+                    else if (User.IsInRole("Member"))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.scheduleId">Details |</a>
+                        <a asp-action="Create" asp-controller="Appointment" asp-route-selectedScheduleID="@item.scheduleId">Add Appointment</a>
+                    }
+                }
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

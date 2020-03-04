@@ -1,0 +1,100 @@
+﻿@model Xianer_SkiClub.Models.Schedule
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Schedule</h4>
+    <hr />
+    <dl class="row">
+        @if (User.Identity.IsAuthenticated)
+        {
+            if (User.IsInRole("Coach"))
+            {
+                <dt class="col-sm-5">
+                    Schedule ID
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.scheduleId)
+                </dd>
+                <dt class="col-sm-5">
+                    Start Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.startDate)
+                </dd>
+                <dt class="col-sm-5">
+                    End Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.endDate)
+                </dd>
+                <dt class="col-sm-5">
+                    Create Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.createDate)
+                </dd>
+                <dt class="col-sm-5">
+                    Create By Employee ID
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.createByEmployeeId)
+                </dd>
+                <dt class="col-sm-5">
+                    Last Modified Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.lastModifiedDate)
+                </dd>
+                <dt class="col-sm-5">
+                    Last Modified By Employee Id
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.lastModifiedByEmployeeId)
+                </dd>
+                <dt class="col-sm-5">
+                    Location
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.location.locationDesc)
+                </dd>
+            }
+            else if (User.IsInRole("Member"))
+            {
+                <dt class="col-sm-5">
+                    Schedule ID
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.scheduleId)
+                </dd>
+                <dt class="col-sm-5">
+                    Start Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.startDate)
+                </dd>
+                <dt class="col-sm-5">
+                    End Date
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.endDate)
+                </dd>
+                <dt class="col-sm-5">
+                    Location
+                </dt>
+                <dd class="col-sm-5">
+                    @Html.DisplayFor(model => model.location.locationDesc)
+                </dd>
+            }
+        }
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.scheduleId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
