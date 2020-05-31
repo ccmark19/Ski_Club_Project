@@ -6,7 +6,7 @@ Javascript, boostrap, CSS, JSON, LINQ for front-end development.
 If you download it, please change database and server name string which located in /appsettings
 Initialized sample data included two roles that is coach and user.
 
-Use the account below without register, and their password is the same which is qweQWE_123
+Use the account below without register, and their password is the same which is qweQWE_123<br>
 coach1@c.c    coach2@c.c    member1@m.m   member2@m.m
 
 As a coach you can add location and modify your own schedule that allow user to select to add on their appointment.
